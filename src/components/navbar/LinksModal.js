@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Stack, IconButton, Divider, Modal, Button } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router-dom";
 
 const stackStyling = {
   position: "absolute",
@@ -21,11 +22,12 @@ function LinksModal() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const navigate = useNavigate();
 
   return (
     <>
       <IconButton onClick={handleOpen}>
-        <MenuIcon />
+        <MenuIcon color="white" />
       </IconButton>
       <Modal open={open} onClose={handleClose}>
         <Stack
@@ -34,10 +36,10 @@ function LinksModal() {
           divider={<Divider orientation="horizontal" flexItem />}
           sx={stackStyling}
         >
-          <Button> Home </Button>
-          <Button> Categories</Button>
+          <Button onClick={() => navigate("/")}> Home </Button>
+          <Button> Movies</Button>
           <Button> About</Button>
-          <Button> Login</Button>
+          <Button onClick={() => navigate("/login")}> Login</Button>
         </Stack>
       </Modal>
     </>

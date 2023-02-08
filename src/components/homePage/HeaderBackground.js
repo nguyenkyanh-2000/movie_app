@@ -1,13 +1,9 @@
-import React from "react";
-import LoginForm from "../components/loginPage/LoginForm";
-import { styled } from "@mui/system";
+import styled from "@emotion/styled";
 
-const WallPaper = styled("div")(({ theme }) => ({
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100vw",
-  height: "100vh",
+export const HeaderBackground = styled("div")(({ theme }) => ({
+  position: "relative",
+  height: "fit-content",
+  padding: "0px 0px 40px 0px",
   background: `linear-gradient(-45deg, ${theme.palette.thematic.black}, ${theme.palette.thematic.green}, ${theme.palette.thematic.yellow}, ${theme.palette.thematic.blue})`,
   backgroundSize: "400% 400%",
   animation: "gradient 15s ease infinite",
@@ -24,13 +20,3 @@ const WallPaper = styled("div")(({ theme }) => ({
     },
   },
 }));
-
-function Login() {
-  return (
-    <WallPaper>
-      <LoginForm></LoginForm>
-    </WallPaper>
-  );
-}
-
-export default Login;

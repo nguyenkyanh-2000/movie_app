@@ -16,8 +16,12 @@ function LinksBar() {
   return isTablet ? (
     <>
       <Stack direction="row" spacing={5} justifyContent="center">
-        <Button sx={btnStyle}>Home </Button>
-        <Button sx={btnStyle}> Categories</Button>
+        <Button sx={btnStyle} onClick={() => navigate("/")}>
+          Home
+        </Button>
+        <Button sx={btnStyle} onClick={() => navigate("/movie")}>
+          Discover
+        </Button>
         <Button sx={btnStyle}> About</Button>
         <Button sx={btnStyle} onClick={() => navigate("/login")}>
           Login

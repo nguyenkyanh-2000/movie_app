@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import Box from "@mui/material/Box";
-import { InputBase, alpha, styled } from "@mui/material";
+import { alpha, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { StyledInputBase } from "./StyledInputBase";
+import { Controller, useForm } from "react-hook-form";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 const style = {
   position: "relative",
@@ -24,23 +27,31 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   justifyContent: "center",
 }));
 
-const inputStyle = {
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: (theme) => theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: (theme) => `calc(1em + ${theme.spacing(4)})`,
-    width: "100%",
-  },
-};
-
 export default function SearchArea() {
+  const { register, control, handleSubmit } = useForm();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const onSubmit = (data) => {
+    //setSearchParams({ query: data.searchQuery });
+    console.log(data);
+  };
   return (
     <Box sx={style}>
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
-      <InputBase sx={inputStyle} placeholder="Search"></InputBase>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          control={control}
+          name="searchQuery"
+          render={({ ...field }) => (
+            <StyledInputBase
+              placeholder="Search"
+              {...register("searchQuery")}
+            />
+          )}
+        ></Controller>
+      </form>
     </Box>
   );
 }
