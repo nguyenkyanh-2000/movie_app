@@ -14,6 +14,7 @@ const defaultValues = {
   genres: [],
   votingAverage: [0, 10],
   primary_release_date: { gte: "", lte: "" },
+  keywords: [],
 };
 
 function FilterSection({ setFormData }) {
@@ -37,7 +38,7 @@ function FilterSection({ setFormData }) {
         />
         <UserScoreAccordion />
         <DatePickerAccordion />
-        <KeywordsAccordion />
+        <KeywordsAccordion name="keywords" label="Find By Keywords" />
         <Divider />
         <Button variant="container" type="submit">
           Submit

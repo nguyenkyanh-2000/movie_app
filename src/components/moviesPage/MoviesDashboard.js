@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/system";
-import { Grid, Pagination } from "@mui/material";
+import { Grid, Pagination, Typography } from "@mui/material";
 import MovieCard from "./MovieCard";
 
 const containerStyle = (theme) => ({
@@ -17,19 +17,25 @@ const containerStyle = (theme) => ({
 function MoviesDashboard({ movies, page, setPage, totalPages }) {
   return (
     <Box sx={containerStyle}>
-      <Grid container spacing={4} justifyContent="center">
-        {movies.map((movie, index) => (
-          <Grid item key={index}>
-            <MovieCard movie={movie}></MovieCard>
+      {movies.length > 0 ? (
+        <>
+          <Grid container spacing={4} justifyContent="center">
+            {movies.map((movie, index) => (
+              <Grid item key={index}>
+                <MovieCard movie={movie}></MovieCard>
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
-      <Pagination
-        sx={{ alignSelf: "center", marginTop: 6 }}
-        page={page}
-        count={totalPages}
-        onChange={(event, value) => setPage(value)}
-      ></Pagination>
+          <Pagination
+            sx={{ alignSelf: "center", marginTop: 6 }}
+            page={page}
+            count={totalPages}
+            onChange={(event, value) => setPage(value)}
+          ></Pagination>
+        </>
+      ) : (
+        <Typography variant="h4">{`No results :(`}</Typography>
+      )}
     </Box>
   );
 }

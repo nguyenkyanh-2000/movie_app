@@ -1,5 +1,5 @@
 import apiMovieService from "../app/apiMovieService";
-import { API_KEY, BASE_URL } from "../app/config";
+import { API_KEY } from "../app/config";
 
 export const getTrendingMovies = async () => {
   try {
@@ -52,9 +52,6 @@ export const discoverMovies = async ({
       `/discover/movie?api_key=${API_KEY}&page=${page}&sort_by=${sortBy}&with_genres=${genreIds}&vote_average.gte=${voteAverage_Gte}&vote_average.lte=${voteAverage_Lte}&primary_release_date.gte=${primaryReleaseDate_Gte}&primary_release_date.lte=${primaryReleaseDate_Lte}&with_keywords=${with_keywords}`
     );
     const data = res.data;
-    console.log(
-      `${BASE_URL}/discover/movie?api_key=${API_KEY}&page=${page}&sort_by=${sortBy}&with_genres=${genreIds}&vote_average.gte=${voteAverage_Gte}&vote_average.lte=${voteAverage_Lte}&primary_release_date.gte=${primaryReleaseDate_Gte}&primary_release_date.lte=${primaryReleaseDate_Lte}&with_keywords=${with_keywords}`
-    );
     return data;
   } catch (error) {}
 };

@@ -37,7 +37,7 @@ function LinksModal() {
           sx={stackStyling}
         >
           <Button onClick={() => navigate("/")}> Home </Button>
-          <Button> Movies</Button>
+          <Button onClick={() => navigate("/movie")}> Discover</Button>
           <Button> About</Button>
           <Button onClick={() => navigate("/login")}> Login</Button>
         </Stack>

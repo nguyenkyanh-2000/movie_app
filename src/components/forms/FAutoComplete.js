@@ -4,7 +4,7 @@ import { Autocomplete } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Chip } from "@mui/material";
 
-// options: {id: , name: }
+// options: [{id: , name: }]
 function FAutoComplete({ name, label, options, setCurrentKeyword, ...other }) {
   const { control } = useFormContext();
   return (
@@ -18,9 +18,11 @@ function FAutoComplete({ name, label, options, setCurrentKeyword, ...other }) {
             onChange(option);
           }}
           onInputChange={(event, value) => setCurrentKeyword(value)}
-          value={value}
           options={options}
           getOptionLabel={(option) => (option.name ? option.name : "")}
+          isOptionEqualToValue={(option, value) => {
+            return option.id === value.id;
+          }}
           renderTags={(value, getTagProps) =>
             value.map((option, index) => (
               <Chip

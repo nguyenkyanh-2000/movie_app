@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Box, Stack, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const headerSectionStyle = {
   width: "100%",
@@ -37,6 +38,7 @@ const imageWrapper = (theme) => ({
 });
 
 function HomePageHeaderSection() {
+  const navigate = useNavigate();
   return (
     <Stack
       width={"80%"}
@@ -55,7 +57,9 @@ function HomePageHeaderSection() {
           required. With action, comedy, movies, news, and more streaming 24/7,
           there’s a movie for everyone.
         </Typography>
-        <Button variant="contained">Discover</Button>
+        <Button variant="contained" onClick={() => navigate("/movie")}>
+          Discover
+        </Button>
       </Box>
       <Box sx={imageWrapper}>
         <img

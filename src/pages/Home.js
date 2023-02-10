@@ -6,19 +6,6 @@ import MovieCarousel from "../components/carousel/MovieCarousel";
 import { HeaderBackground } from "../components/homePage/HeaderBackground";
 import { getTrendingMovies, getUpcomingMovies } from "../data/fetchMovies";
 
-const items = [
-  {
-    name: "Random Name #1",
-    description: "Probably the most random thing you have ever seen!",
-    image: "https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png",
-  },
-  {
-    name: "Random Name #2",
-    description: "Hello World!",
-    image: "https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png",
-  },
-];
-
 const titleCarousel = {
   fontSize: "36px",
   fontWeight: "600",

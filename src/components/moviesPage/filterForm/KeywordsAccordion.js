@@ -4,9 +4,9 @@ import { ExpandMore } from "@mui/icons-material";
 import FAutoComplete from "../../forms/FAutoComplete";
 import { searchKeywords } from "../../../data/fetchKeywords";
 
-function KeywordsAccordion() {
+function KeywordsAccordion({ name, label }) {
   const [keywordsList, setKeywordsList] = useState([]);
-  const [currentKeyword, setCurrentKeyword] = useState();
+  const [currentKeyword, setCurrentKeyword] = useState([]);
 
   useEffect(() => {
     const getKeyWords = async (keyword) => {
@@ -27,8 +27,8 @@ function KeywordsAccordion() {
       </AccordionSummary>
       <AccordionDetails>
         <FAutoComplete
-          name="keywords"
-          label="Keywords"
+          name={name}
+          label={label}
           options={keywordsList || []}
           setCurrentKeyword={setCurrentKeyword}
         />
