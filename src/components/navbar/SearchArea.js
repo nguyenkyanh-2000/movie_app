@@ -29,7 +29,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 
 export default function SearchArea() {
   const { register, control, handleSubmit } = useForm();
-  const [setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
