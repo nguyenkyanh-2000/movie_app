@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Stack, IconButton, Divider, Modal, Button } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../../authentication/AuthContext.js";
 
 const stackStyling = {
   position: "absolute",
@@ -23,6 +24,13 @@ function LinksModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const navigate = useNavigate();
+  const auth = useContext(AuthContext);
+
+  const handleClickLogout = () => {
+    auth.signout(() => {
+      navigate("/");
+    });
+  };
 
   return (
     <>
@@ -39,7 +47,11 @@ function LinksModal() {
           <Button onClick={() => navigate("/")}> Home </Button>
           <Button onClick={() => navigate("/movie")}> Discover</Button>
           <Button> About</Button>
-          <Button onClick={() => navigate("/login")}> Login</Button>
+          {auth?.user ? (
+            <Button onClick={handleClickLogout}>Logout</Button>
+          ) : (
+            <Button onClick={() => navigate("/login")}>Login</Button>
+          )}
         </Stack>
       </Modal>
     </>

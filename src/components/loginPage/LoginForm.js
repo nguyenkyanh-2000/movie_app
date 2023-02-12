@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Stack } from "@mui/system";
 import { Typography, Button, IconButton, InputAdornment } from "@mui/material";
 import { useForm } from "react-hook-form";
@@ -9,6 +9,8 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginFormContainer } from "./LoginFormContainer";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../../authentication/AuthContext.js";
 
 const schema = yup
   .object({
@@ -23,9 +25,14 @@ function LoginForm() {
     defaultValues: { username: "", password: "", remember: false },
   });
   const { handleSubmit } = methods;
+  const navigate = useNavigate();
+  const auth = useContext(AuthContext);
 
   const onSubmit = (data) => {
     console.log(data);
+    auth.signin(data.username, () => {
+      navigate(-1);
+    });
   };
 
   const [showPassword, setShowPassword] = useState(false);

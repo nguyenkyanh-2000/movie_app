@@ -6,11 +6,12 @@ import { getCastById } from "../../data/fetchSingleMovie";
 
 function HeaderSection({ movieData }) {
   const [castData, setCastData] = useState([]);
+
   useEffect(() => {
     const getCastData = async () => {
-      const data = await getCastById(movieData.id);
-      setCastData(data.cast);
       try {
+        const data = await getCastById(movieData.id);
+        setCastData(data.cast);
       } catch (error) {
         console.log("error at getCastData");
       }
